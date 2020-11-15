@@ -1,0 +1,493 @@
+Microsoft Windows [Versione 10.0.18363.1139]
+(c) 2019 Microsoft Corporation. Tutti i diritti sono riservati.
+
+C:\Users\asus - pc>git --version
+git version 2.29.2.windows.2
+
+C:\Users\asus - pc>git config --global user.name "Alberto Rontini"
+
+C:\Users\asus - pc>git config --global user.email albertorontini@hotmail.com
+
+C:\Users\asus - pc>cd \dev
+
+C:\dev>git clone https://github.com/egalli64/simple.git
+Cloning into 'simple'...
+remote: Enumerating objects: 26, done.
+remote: Counting objects: 100% (26/26), done.
+remote: Compressing objects: 100% (16/16), done.
+remote: Total 83 (delta 4), reused 20 (delta 0), pack-reused 57
+Receiving objects: 100% (83/83), 9.50 KiB | 648.00 KiB/s, done.
+Resolving deltas: 100% (10/10), done.
+
+C:\dev>cd hello
+
+C:\dev\hello>dir
+ Il volume nell'unità C è OS
+ Numero di serie del volume: 18E1-F49F
+
+ Directory di C:\dev\hello
+
+12/11/2020  16:52    <DIR>          .
+12/11/2020  16:52    <DIR>          ..
+12/11/2020  15:05               410 Hello.class
+12/11/2020  14:48               118 Hello.java
+12/11/2020  17:27               816 pom.xml
+12/11/2020  15:40    <DIR>          src
+12/11/2020  17:54    <DIR>          target
+               3 File          1.344 byte
+               4 Directory  411.447.934.976 byte disponibili
+
+C:\dev\hello>git init
+Initialized empty Git repository in C:/dev/hello/.git/
+
+C:\dev\hello>gitt add pom.xml
+"gitt" non è riconosciuto come comando interno o esterno,
+ un programma eseguibile o un file batch.
+
+C:\dev\hello>git add pom.xml
+
+C:\dev\hello>git commit -m "first commit"
+[master (root-commit) ee27566] first commit
+ 1 file changed, 24 insertions(+)
+ create mode 100644 pom.xml
+
+C:\dev\hello>git push -u origin master
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+C:\dev\hello>git remote add origin https://github.com/Albertorontini/hello.git
+
+C:\dev\hello>git push -u origin master
+info: please complete authentication in your browser...
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 581 bytes | 581.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Albertorontini/hello.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+C:\dev\hello>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore.txt
+        Hello.class
+        Hello.java
+        src/
+        target/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+C:\dev\hello>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        src/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+C:\dev\hello>git add *
+
+C:\dev\hello>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .gitignore
+        new file:   src/main/java/com/example/App.java
+
+
+C:\dev\hello>git commit -m "ignore"
+[master 631bcc3] ignore
+ 2 files changed, 14 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 src/main/java/com/example/App.java
+
+C:\dev\hello>git push
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (9/9), 667 bytes | 667.00 KiB/s, done.
+Total 9 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Albertorontini/hello.git
+   ee27566..631bcc3  master -> master
+
+C:\dev\hello>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+C:\dev\hello>git add
+Nothing specified, nothing added.
+hint: Maybe you wanted to say 'git add .'?
+hint: Turn this message off by running
+hint: "git config advice.addEmptyPathspec false"
+
+C:\dev\hello>git add hello.txt
+
+C:\dev\hello>git push -m "hello"
+error: unknown switch `m'
+usage: git push [<options>] [<repository> [<refspec>...]]
+
+    -v, --verbose         be more verbose
+    -q, --quiet           be more quiet
+    --repo <repository>   repository
+    --all                 push all refs
+    --mirror              mirror all refs
+    -d, --delete          delete refs
+    --tags                push tags (can't be used with --all or --mirror)
+    -n, --dry-run         dry run
+    --porcelain           machine-readable output
+    -f, --force           force updates
+    --force-with-lease[=<refname>:<expect>]
+                          require old value of ref to be at this value
+    --recurse-submodules (check|on-demand|no)
+                          control recursive pushing of submodules
+    --thin                use thin pack
+    --receive-pack <receive-pack>
+                          receive pack program
+    --exec <receive-pack>
+                          receive pack program
+    -u, --set-upstream    set upstream for git pull/status
+    --progress            force progress reporting
+    --prune               prune locally removed refs
+    --no-verify           bypass pre-push hook
+    --follow-tags         push missing but relevant tags
+    --signed[=(yes|no|if-asked)]
+                          GPG sign the push
+    --atomic              request atomic transaction on remote side
+    -o, --push-option <server-specific>
+                          option to transmit
+    -4, --ipv4            use IPv4 addresses only
+    -6, --ipv6            use IPv6 addresses only
+
+
+C:\dev\hello>git push -"hello"
+usage: git push [<options>] [<repository> [<refspec>...]]
+
+    -v, --verbose         be more verbose
+    -q, --quiet           be more quiet
+    --repo <repository>   repository
+    --all                 push all refs
+    --mirror              mirror all refs
+    -d, --delete          delete refs
+    --tags                push tags (can't be used with --all or --mirror)
+    -n, --dry-run         dry run
+    --porcelain           machine-readable output
+    -f, --force           force updates
+    --force-with-lease[=<refname>:<expect>]
+                          require old value of ref to be at this value
+    --recurse-submodules (check|on-demand|no)
+                          control recursive pushing of submodules
+    --thin                use thin pack
+    --receive-pack <receive-pack>
+                          receive pack program
+    --exec <receive-pack>
+                          receive pack program
+    -u, --set-upstream    set upstream for git pull/status
+    --progress            force progress reporting
+    --prune               prune locally removed refs
+    --no-verify           bypass pre-push hook
+    --follow-tags         push missing but relevant tags
+    --signed[=(yes|no|if-asked)]
+                          GPG sign the push
+    --atomic              request atomic transaction on remote side
+    -o, --push-option <server-specific>
+                          option to transmit
+    -4, --ipv4            use IPv4 addresses only
+    -6, --ipv6            use IPv6 addresses only
+
+
+C:\dev\hello>git push -m"hello"
+error: unknown switch `m'
+usage: git push [<options>] [<repository> [<refspec>...]]
+
+    -v, --verbose         be more verbose
+    -q, --quiet           be more quiet
+    --repo <repository>   repository
+    --all                 push all refs
+    --mirror              mirror all refs
+    -d, --delete          delete refs
+    --tags                push tags (can't be used with --all or --mirror)
+    -n, --dry-run         dry run
+    --porcelain           machine-readable output
+    -f, --force           force updates
+    --force-with-lease[=<refname>:<expect>]
+                          require old value of ref to be at this value
+    --recurse-submodules (check|on-demand|no)
+                          control recursive pushing of submodules
+    --thin                use thin pack
+    --receive-pack <receive-pack>
+                          receive pack program
+    --exec <receive-pack>
+                          receive pack program
+    -u, --set-upstream    set upstream for git pull/status
+    --progress            force progress reporting
+    --prune               prune locally removed refs
+    --no-verify           bypass pre-push hook
+    --follow-tags         push missing but relevant tags
+    --signed[=(yes|no|if-asked)]
+                          GPG sign the push
+    --atomic              request atomic transaction on remote side
+    -o, --push-option <server-specific>
+                          option to transmit
+    -4, --ipv4            use IPv4 addresses only
+    -6, --ipv6            use IPv6 addresses only
+
+
+C:\dev\hello>git commit - m"hello"
+error: pathspec '-' did not match any file(s) known to git
+error: pathspec 'mhello' did not match any file(s) known to git
+
+C:\dev\hello>git commit -m"hello"
+[master 91f1af4] hello
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 hello.txt
+
+C:\dev\hello>git add hello.txt
+
+C:\dev\hello>git commit -m"hello"
+[master cd93880] hello
+ 1 file changed, 1 insertion(+)
+
+C:\dev\hello>git commit - m"hello"
+error: pathspec '-' did not match any file(s) known to git
+error: pathspec 'mhello' did not match any file(s) known to git
+
+C:\dev\hello>git commit -m "hello"
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+C:\dev\hello>git commit -m "tested"
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+C:\dev\hello>git add "hello.txt"
+
+C:\dev\hello>git commit -m "test"
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+C:\dev\hello>git branch
+* master
+
+C:\dev\hello>git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+C:\dev\hello>git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 547 bytes | 547.00 KiB/s, done.
+Total 6 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/Albertorontini/hello.git
+   631bcc3..cd93880  master -> master
+
+C:\dev\hello>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+C:\dev\hello>git dir
+git: 'dir' is not a git command. See 'git --help'.
+
+The most similar command is
+        diff
+
+C:\dev\hello>git push
+Everything up-to-date
+
+C:\dev\hello>git add "hello.txt"
+
+C:\dev\hello>git commit -m "tested"
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+C:\dev\hello>git branch
+* master
+
+C:\dev\hello>dir
+ Il volume nell'unità C è OS
+ Numero di serie del volume: 18E1-F49F
+
+ Directory di C:\dev\hello
+
+13/11/2020  14:24    <DIR>          .
+13/11/2020  14:24    <DIR>          ..
+13/11/2020  12:29                 6 .gitignore
+13/11/2020  14:25                 4 hello.txt
+12/11/2020  17:27               816 pom.xml
+12/11/2020  15:40    <DIR>          src
+12/11/2020  17:54    <DIR>          target
+               3 File            826 byte
+               4 Directory  411.794.968.576 byte disponibili
+
+C:\dev\hello>git statu
+git: 'statu' is not a git command. See 'git --help'.
+
+The most similar commands are
+        status
+        stage
+        stash
+
+C:\dev\hello>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+C:\dev\hello>git pull
+Already up to date.
+
+C:\dev\hello>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+C:\dev\hello>git add hello.txt
+
+C:\dev\hello>git commit -m "insert"
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+C:\dev\hello>git push
+Everything up-to-date
+
+C:\dev\hello>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   hello.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+C:\dev\hello>git add hello.txt
+
+C:\dev\hello>git commit -m "changed"
+[master ce5bfc6] changed
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+C:\dev\hello>git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 267 bytes | 267.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/Albertorontini/hello.git
+   cd93880..ce5bfc6  master -> master
+
+C:\dev\hello>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+C:\dev\hello>git branch
+* master
+
+C:\dev\hello>git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+C:\dev\hello>git pull
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 650 bytes | 65.00 KiB/s, done.
+From https://github.com/Albertorontini/hello
+   ce5bfc6..dc8b996  master     -> origin/master
+Updating ce5bfc6..dc8b996
+Fast-forward
+ hello.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+C:\dev\hello>git psuh
+git: 'psuh' is not a git command. See 'git --help'.
+
+The most similar command is
+        push
+
+C:\dev\hello>git push
+Everything up-to-date
+
+C:\dev\hello>git push
+Everything up-to-date
+
+C:\dev\hello>git log
+commit dc8b9964efbbe10ee65d67bac4f76cdaf79797ba (HEAD -> master, origin/master)
+Author: Albertorontini <74405824+Albertorontini@users.noreply.github.com>
+Date:   Fri Nov 13 15:11:05 2020 +0100
+
+    Update hello.txt
+
+commit ce5bfc621c0e69d3d4435ad7f499dd5d3142e3f4
+Author: Alberto Rontini <albertorontini@hotmail.com>
+Date:   Fri Nov 13 15:07:03 2020 +0100
+
+    changed
+
+commit cd9388038e39c3fb732975278ad4887371db9012
+Author: Alberto Rontini <albertorontini@hotmail.com>
+Date:   Fri Nov 13 14:28:27 2020 +0100
+
+    hello
+
+commit 91f1af44f6b72f227ee382400f30fa03296cb3f7
+Author: Alberto Rontini <albertorontini@hotmail.com>
+Date:   Fri Nov 13 14:27:10 2020 +0100
+
+    hello
+
+commit 631bcc332949ac9601d399dbd1bf474fbf57ebd3
+Author: Alberto Rontini <albertorontini@hotmail.com>
+Date:   Fri Nov 13 12:44:57 2020 +0100
+
+    ignore
+:                
